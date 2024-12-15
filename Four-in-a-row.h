@@ -120,4 +120,15 @@ public:
     }
 };
 
+class Four_In_A_Row_Computer_Player : public RandomPlayer<char> {
+public:
+    Four_In_A_Row_Computer_Player(char symbol) : RandomPlayer(symbol) {}
+
+    void getmove(int& x, int& y, char& number) override {
+        x = rand() % 7;
+        y = 0;
+        number = symbol;
+    }
+};
+
 #endif // FOUR_IN_A_ROW_H
