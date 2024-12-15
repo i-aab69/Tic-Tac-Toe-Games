@@ -118,4 +118,25 @@ public:
     }
 };
 
-#endif
+class NumericalTicTacToeComputerPlayer : public RandomPlayer<int> {
+private:
+    vector<int> available_numbers;
+public:
+    NumericalTicTacToeComputerPlayer(int symbol) : RandomPlayer(symbol) {
+        if (symbol % 2 == 1) {
+            available_numbers = {1, 3, 5, 7, 9};
+        } else {
+            available_numbers = {2, 4, 6, 8};
+        }
+    }
+
+    void getmove(int& x, int& y, int& number) override {
+        x = rand() % 3;
+        y = rand() % 3;
+        number = available_numbers[rand() % available_numbers.size()];
+        symbol = number;
+        available_numbers.erase(remove(available_numbers.begin(), available_numbers.end(), number), available_numbers.end());
+    }
+};
+
+#endif // NUMERICAL_TIC_TAC_TOE_H
